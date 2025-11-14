@@ -88,7 +88,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                     $registro->id
                 ));
 
-                print json_encode(1);
+                print json_encode(2); 
             } catch (Exception $e) {
                 echo "Erro: " . $e->getMessage() . "<br>";
             } finally {
