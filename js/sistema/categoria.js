@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 	//configurando a tabela de dados listados
 	$("#lista_categoria").DataTable({
