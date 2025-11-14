@@ -3,9 +3,12 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS;
+SET UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;
+SET FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE;
+SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema mydb
@@ -17,7 +20,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema syscash
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `syscash` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `syscash` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci  ;
 USE `syscash` ;
 
 -- -----------------------------------------------------
@@ -31,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `syscash`.`usuario` (
   `senha` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci ;
 
 
 -- -----------------------------------------------------
@@ -49,19 +52,8 @@ CREATE TABLE IF NOT EXISTS `syscash`.`categoria` (
     FOREIGN KEY (`usuario_id`)
     REFERENCES `syscash`.`usuario` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
--- -----------------------------------------------------
--- Table `syscash`.`favorecido`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `syscash`.`favorecido` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`),
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -85,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `syscash`.`conta_receber` (
     FOREIGN KEY (`usuario_id`)
     REFERENCES `syscash`.`usuario` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
 -- -----------------------------------------------------
 -- Table `syscash`.`conta_pagar`
@@ -109,10 +101,24 @@ CREATE TABLE IF NOT EXISTS `syscash`.`conta_pagar` (
     FOREIGN KEY (`usuario_id`)
     REFERENCES `syscash`.`usuario` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
+
+-- -----------------------------------------------------
+-- Table `syscash`.`favorecido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `syscash`.`favorecido` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
