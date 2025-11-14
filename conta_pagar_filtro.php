@@ -4,7 +4,7 @@ function validaDados($registro)
 {
     $erros = [];
 
-    if (!filter_var($registro->descricao_contapagar, FILTER_SANITIZE_STRING)) {
+   /* if (!filter_var($registro->descricao_contapagar, FILTER_SANITIZE_STRING)) {
         $erros["descricao_contapagar"] =  "Descrição: Campo vazio e ou informação inválida!";
     }
 
@@ -25,7 +25,7 @@ function validaDados($registro)
 
     if (!filter_var($registro->categoria_id_contapagar, FILTER_SANITIZE_STRING)) {
         $erros["categoria_id_contapagar"] =  "Categoria: Campo vazio e ou informação inválida!";
-    }
+    }*/
 
     if (count($erros) > 0) {
         $_SESSION["erros"] = $erros;
