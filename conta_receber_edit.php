@@ -95,6 +95,20 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                 <input type="text" class="form-control" id="favorecido_contareceber" name="favorecido_contareceber" maxlength="100" value="<?php echo isset($resultado['favorecido']) ? $resultado['favorecido'] : ''; ?>">
                             </div>
                             <div class="col-md-6">
+                                <label for="favorecido_contareceber" class="form-label">Categoria</label><select name="favorecido_contareceber" id="favorecido_id_contareceber" class="form-select">
+                                    <?php
+                                    $favorecidos = listarfavorecido();
+                                    foreach ($favorecidos as $favorecido) {
+                                        if ($favorecido["id"] == $resultado['favorecido_id']) {
+                                            echo "<option value='" . $favorecido["id"] . "' selected>" . $favorecido["nome"] . "</option>";
+                                        } else {
+                                            echo "<option value='" . $favorecidoa["id"] . "'>" . $favorecido["nome"] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="valor" class="form-label">Valor R$</label>
                                 <input type="text" class="form-control" id="valor_contareceber" name="valor_contareceber" value="<?php echo isset($resultado['valor']) ?  str_replace(".", ",", $resultado["valor"]) : ''; ?>">
                             </div>

@@ -1,15 +1,16 @@
 <?php
 
-function validaDados($registro)
+function validaDadosPagar($registro)
 {
+
     $erros = [];
 
     if (!filter_var($registro->descricao_contapagar, FILTER_SANITIZE_STRING)) {
         $erros["descricao_contapagar"] =  "Descrição: Campo vazio e ou informação inválida!";
     }
 
-    if (!filter_var($registro->favorecido_contapagar, FILTER_SANITIZE_STRING)) {
-        $erros["favorecido_contapagar"] =  "Favorecido: Campo vazio e ou informação inválida!";
+    if (!filter_var($registro->favorecido_id_contapagar, FILTER_SANITIZE_STRING)) {
+        $erros["favorecido_id_contapagar"] =  "Favorecido: Campo vazio e ou informação inválida!";
     }
 
     //retirar a máscara nessa sequência

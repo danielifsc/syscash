@@ -5,6 +5,7 @@ require_once("valida_acesso.php");
 require_once("conexao.php");
 require_once("conta_pagar_filtro.php");
 
+
 //operações via ajax
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     if (!isset($_POST["acao"])) {
@@ -18,14 +19,16 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
 
                 $registro = new stdClass();
                 $registro = json_decode($_POST['registro']);
-                validaDados($registro);
+                validaDadosPagar($registro);
+              
+                
 
                 $sql = "insert into conta_pagar(descricao, favorecido, valor, data_vencimento, categoria_id, usuario_id) VALUES (?, ?, ?, ?, ?, ?) ";
                 $conexao = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . BANCO, USUARIO, SENHA);
                 $pre = $conexao->prepare($sql);
                 $pre->execute(array(
                     $registro->descricao_contapagar,
-                    $registro->favorecido_contapagar,
+                    $registro->favorecido_id_contapagar,
                     $registro->valor_contapagar,
                     $registro->datavencimento_contapagar,
                     $registro->categoria_id_contapagar,
@@ -51,14 +54,14 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
 
                 $registro = new stdClass();
                 $registro = json_decode($_POST['registro']);
-                validaDados($registro);
+                validaDadosPagar($registro);
 
                 $sql = "update conta_pagar set descricao = ?, favorecido = ?, valor = ?, data_vencimento = ?, categoria_id = ? where id = ? ";
                 $conexao = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . BANCO, USUARIO, SENHA);
                 $pre = $conexao->prepare($sql);
                 $pre->execute(array(
                     $registro->descricao_contapagar,
-                    $registro->favorecido_contapagar,
+                    $registro->nome_favorecido,
                     $registro->valor_contapagar,
                     $registro->datavencimento_contapagar,
                     $registro->categoria_id_contapagar,

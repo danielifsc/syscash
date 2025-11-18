@@ -5,6 +5,7 @@ require_once("valida_acesso.php");
 require_once("conexao.php");
 require_once("conta_receber_filtro.php");
 
+
 //operações via ajax
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     if (!isset($_POST["acao"])) {
@@ -18,14 +19,15 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
 
                 $registro = new stdClass();
                 $registro = json_decode($_POST['registro']);
-                validaDados($registro);
+                validaDadosReceber($registro);
+        
 
                 $sql = "insert into conta_receber(descricao, favorecido, valor, data_vencimento, categoria_id, usuario_id) VALUES (?, ?, ?, ?, ?, ?) ";
                 $conexao = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . BANCO, USUARIO, SENHA);
                 $pre = $conexao->prepare($sql);
                 $pre->execute(array(
                     $registro->descricao_contareceber,
-                    $registro->favorecido_contareceber,
+                    $registro->favorecido_id_contareceber,
                     $registro->valor_contareceber,
                     $registro->datavencimento_contareceber,
                     $registro->categoria_id_contareceber,
@@ -51,14 +53,14 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
 
                 $registro = new stdClass();
                 $registro = json_decode($_POST['registro']);
-                validaDados($registro);
+                validaDadosReceber($registro);
 
                 $sql = "update conta_receber set descricao = ?, favorecido = ?, valor = ?, data_vencimento = ?, categoria_id = ? where id = ? ";
                 $conexao = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . BANCO, USUARIO, SENHA);
                 $pre = $conexao->prepare($sql);
                 $pre->execute(array(
                     $registro->descricao_contareceber,
-                    $registro->favorecido_contareceber,
+                    $registro->favorecido_id_contareceber,
                     $registro->valor_contareceber,
                     $registro->datavencimento_contareceber,
                     $registro->categoria_id_contareceber,

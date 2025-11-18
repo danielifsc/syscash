@@ -90,9 +90,19 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                 <label for="descricao" class="form-label">Descrição</label>
                                 <input type="text" class="form-control" id="descricao_contapagar" name="descricao_contapagar" maxlength="100" value="<?php echo isset($resultado['descricao']) ? $resultado['descricao'] : ''; ?>" autofocus>
                             </div>
-                            <div class="col-md-6">
-                                <label for="favorecido" class="form-label">Favorecido</label>
-                                <input type="text" class="form-control" id="favorecido_contapagar" name="favorecido_contapagar" maxlength="100" value="<?php echo isset($resultado['favorecido']) ? $resultado['favorecido'] : ''; ?>">
+                           <div class="col-md-6">
+                                <label for="favorecido_contapagar" class="form-label">Favorecido</label><select name="favorecido_id_contapagar" id="favorecido_id_contapagar" class="form-select">
+                                    <?php
+                                    $favorecidos = listarfavorecido();
+                                    foreach ($favorecidos as $favorecido) {
+                                        if ($favorecido["id"] == $resultado['favorecido_id']) {
+                                            echo "<option value='" . $favorecido["id"] . "' selected>" . $favorecido["nome"] . "</option>";
+                                        } else {
+                                            echo "<option value='" . $favorecidoa["id"] . "'>" . $favorecido["nome"] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="valor" class="form-label">Valor R$</label>

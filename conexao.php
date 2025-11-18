@@ -5,6 +5,6 @@ const BANCO = "syscash";
 
 const USUARIO = "root";
 
-const SENHA = "";
+const SENHA = "teste";
 
 const REGISTROS_POR_PAGINA = 5;

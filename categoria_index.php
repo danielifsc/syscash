@@ -4,6 +4,7 @@ require_once("valida_acesso.php");
 <?php
 require_once("conexao.php");
 
+
 try {
     //verificando se é uma requisição post para efetuar a pesquisa específica e preparar paginação
     $texto_busca = "";
