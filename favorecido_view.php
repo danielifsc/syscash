@@ -91,22 +91,6 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                     <?= isset($resultado["nome"]) ? $resultado["nome"] : ""; ?>
                                 </dd>
                             </dl>
-                            <dl>
-                                <dt>Tipo</dt>
-                                <dd>
-                                    <?php
-                                    if (isset($resultado["tipo"])) {
-                                        if ($resultado["tipo"] == 1) {
-                                            echo "Entrada";
-                                        } else {
-                                            echo "Saída";
-                                        }
-                                    } else {
-                                        echo "";
-                                    }
-                                    ?>
-                                </dd>
-                            </dl>
                         </div>
                     </div>
                 </div>

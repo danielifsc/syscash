@@ -3,6 +3,7 @@ require_once("valida_acesso.php");
 ?>
 <?php
 require_once("categoria_crud.php");
+require_once("favorecido_crud.php");
 
 //a listagem de categoria é geral poderia ser filtrado por status
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
@@ -98,7 +99,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                         if ($favorecido["id"] == $resultado['favorecido_id']) {
                                             echo "<option value='" . $favorecido["id"] . "' selected>" . $favorecido["nome"] . "</option>";
                                         } else {
-                                            echo "<option value='" . $favorecidoa["id"] . "'>" . $favorecido["nome"] . "</option>";
+                                            echo "<option value='" . $favorecido["id"] . "'>" . $favorecido["nome"] . "</option>";
                                         }
                                     }
                                     ?>
@@ -119,7 +120,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                     <?php
                                     $categorias = listarCategoriaSaida();
                                     foreach ($categorias as $categoria) {
-                                        if ($categoria["id"] == $resultado['categoria_id']) {
+                                        if ($categoria["id"] == $resultado['categoria']) {
                                             echo "<option value='" . $categoria["id"] . "' selected>" . $categoria["descricao"] . "</option>";
                                         } else {
                                             echo "<option value='" . $categoria["id"] . "'>" . $categoria["descricao"] . "</option>";

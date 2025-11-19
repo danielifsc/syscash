@@ -3,6 +3,7 @@ require_once("valida_acesso.php");
 ?>
 <?php
 require_once("categoria_crud.php");
+require_once("favorecido_crud.php");
 
 //a listagem de categoria é geral poderia ser filtrado por status
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
@@ -10,7 +11,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
         $erros = [];
         $id = filter_input(INPUT_POST, "id_contareceber", FILTER_VALIDATE_INT);
         $pagina = filter_input(INPUT_POST, "pagina_contareceber", FILTER_VALIDATE_INT);
-        $texto_busca = $_POST["texto_busca_contareceber"];//filter_input(INPUT_POST, "texto_busca_contareceber", FILTER_SANITIZE_STRING);
+        $texto_busca = $_POST["texto_busca_contareceber"]; //filter_input(INPUT_POST, "texto_busca_contareceber", FILTER_SANITIZE_STRING);
 
         $sql = "select * from conta_receber where id = ?";
 
@@ -91,18 +92,13 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                 <input type="text" class="form-control" id="descricao_contareceber" name="descricao_contareceber" maxlength="100" value="<?php echo isset($resultado['descricao']) ? $resultado['descricao'] : ''; ?>" autofocus>
                             </div>
                             <div class="col-md-6">
-                                <label for="favorecido" class="form-label">Favorecido</label>
-                                <input type="text" class="form-control" id="favorecido_contareceber" name="favorecido_contareceber" maxlength="100" value="<?php echo isset($resultado['favorecido']) ? $resultado['favorecido'] : ''; ?>">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="favorecido_contareceber" class="form-label">Categoria</label><select name="favorecido_contareceber" id="favorecido_id_contareceber" class="form-select">
-                                    <?php
-                                    $favorecidos = listarfavorecido();
+                                <label for="favorecido_contareceber" class="form-label">Favorecido</label><select name="favorecido_id_contareceber" id="favorecido_id_contareceber" class="form-select">
+                                    <?php $favorecidos = listarfavorecido();
                                     foreach ($favorecidos as $favorecido) {
                                         if ($favorecido["id"] == $resultado['favorecido_id']) {
                                             echo "<option value='" . $favorecido["id"] . "' selected>" . $favorecido["nome"] . "</option>";
                                         } else {
-                                            echo "<option value='" . $favorecidoa["id"] . "'>" . $favorecido["nome"] . "</option>";
+                                            echo "<option value='" . $favorecido["id"] . "'>" . $favorecido["nome"] . "</option>";
                                         }
                                     }
                                     ?>

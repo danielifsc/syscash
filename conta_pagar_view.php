@@ -4,6 +4,7 @@ require_once("valida_acesso.php");
 <?php
 require_once("conexao.php");
 require_once("categoria_crud.php");
+require_once("favorecido_crud.php");
 
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     try {
@@ -97,7 +98,8 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                             <dl>
                                 <dt>Favorecido</dt>
                                 <dd>
-                                    <?= isset($resultado["favorecido"]) ? $resultado["favorecido"] : ""; ?>
+                                     <?= isset($resultado["valor"]) ? buscarfavorecido($resultado["favorecido"])[0]["nome"] : ""; ?>
+                                     
                                 </dd>
                             </dl>
                             <dl>
