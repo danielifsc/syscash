@@ -103,11 +103,16 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                         <div class="tab-pane fade" id="seguranca_usuario" role="tabpanel" aria-labelledby="seguranca_usuario">
                             <dl>
                                 <dt>Login</dt>
-                                <dd>Dado não listado</dd>
+                                <dd>
+                                      <?= isset($resultado["login"]) ? $resultado["login"] : ""; ?>
+                                </dd>
                             </dl>
                             <dl>
                                 <dt>Senha</dt>
-                                <dd>Dado não listado</dd>
+                                <dd id="textoSenha" >
+                                        <?= isset($resultado["senha"]) ? $resultado["senha"] : ""; ?>    
+                                </dd>
+                                 
                             </dl>
                         </div>
                     </div>

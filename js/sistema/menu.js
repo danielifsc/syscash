@@ -1,10 +1,10 @@
 //para funcionar navegação via ajax os ids devem ser únicos em cada tela
 $(document).ready(function () {
-    //clicar no botão da div de erros e escondendo as mensagens de erros
+    //clicar no botão da div de erros e escondendo as mensagens de erros 
     $("#div_mensagem_botao_menu").click(function () {
         $("#div_mensagem_menu").hide();
     });
-
+    /*
     $('#botao_pesquisar_grafico').click(function (e) {
         var ano = $("#ano").val();
         var id_usuario = $("#usuario_id_menu").val();
@@ -111,7 +111,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    */
     $("#home_link").click(function () {
         $(location).prop("href", "menu.php");
     });
@@ -172,7 +172,7 @@ $(document).ready(function () {
 
     showNavbar('header-toggle', 'nav-bar', 'body', 'header');
 
-    /*===== LINK ACTIVE =====*/
+    /*===== LINK ACTIVE =====*/ 
     const linkColor = document.querySelectorAll('.nav_link');
 
     function colorLink() {
@@ -183,4 +183,4 @@ $(document).ready(function () {
     }
     linkColor.forEach(l => l.addEventListener('click', colorLink));
 
-});
+}); 

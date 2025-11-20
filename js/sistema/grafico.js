@@ -1,5 +1,5 @@
-	// populando o gráfico conforme altera o produto
-	$('#gerar_grafico').click(function () {
+	// populando o gráfico conforme altera o produto 
+	/*$('#gerar_grafico').click(function () {
 	    $.ajax({
 	        'type': 'POST',
 	        'url': $('#produto_id').attr('rel') +
@@ -112,4 +112,4 @@
 	            });
 	        }
 	    });
-	});
+	});*/

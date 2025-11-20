@@ -38,27 +38,27 @@ class favorecidoPDF extends FPDF
     function listagem()
     {
         try {
-            $cabecalho = ["ID", "Descrição", "Tipo"];
+            $cabecalho = ["ID", "Nome"];
             $dados = listarfavorecido();
 
             // Cabeçalho
             foreach ($cabecalho as $col)
-                $this->Cell(60, 7, iconv("utf-8", "cp1252", $col), 1);
+                $this->Cell(95, 7, iconv("utf-8", "cp1252", $col), 1);
             $this->Ln();
 
             // Dados
             foreach ($dados as $linha) {
                 foreach ($linha as $chave => $valor) {
                     if ($chave != "usuario_id") {
-                        if ($chave == "tipo") {
-                            if ($valor == 1) {
+                       // if ($chave == "tipo") {
+                        /*    if ($valor == 1) {
                                 $this->Cell(60, 6, iconv("utf-8", "cp1252", "Entrada"), 1);
                             } else {
                                 $this->Cell(60, 6, iconv("utf-8", "cp1252", "Saída"), 1);
-                            }
-                        } else {
-                            $this->Cell(60, 6, iconv("utf-8", "cp1252", $valor), 1);
-                        }
+                            }*/
+                     //   } else {
+                            $this->Cell(95, 6, iconv("utf-8", "cp1252", $valor), 1);
+                     //   }
                     }
                 }
                 $this->Ln();
