@@ -48,14 +48,16 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
 
                 $registro = new stdClass();
                 $registro = json_decode($_POST['registro']);
-                validaDados($registro);
+                validaDadosCategoria($registro);
 
-                $sql = "update categoria set descricao = ? where id = ? ";
+                $sql = "update categoria set descricao = ?, tipo = ? where id = ? ";
                 $conexao = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . BANCO, USUARIO, SENHA);
                 $pre = $conexao->prepare($sql);
                 $pre->execute(array(
                     $registro->descricao_categoria,
+                    $registro->tipo_categoria,
                     $registro->id_categoria
+                    
                 ));
                 print json_encode(1);
             } catch (Exception $e) {

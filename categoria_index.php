@@ -141,6 +141,7 @@ try {
                             <tr>
                                 <th>ID</th>
                                 <th>Descri&ccedil;&atilde;o</th>
+                                <th>Tipo</th>
                                 <th>A&ccedil;&otilde;es</th>
                             </tr>
                         </thead>
@@ -151,6 +152,9 @@ try {
                                 <tr id="<?php echo $categoria['id'] . "_categoria"; ?>">
                                     <td><?php echo $categoria["id"]; ?></td>
                                     <td><?php echo $categoria["descricao"]; ?></td>
+                                    <td><?php if($categoria["tipo"]==1){
+                                        echo 'entrada';}
+                                        else{echo 'saida';}; ?></td>
                                     <td>
                                         <a id="botao_view_categoria" chave="<?php echo $categoria['id']; ?>" class="btn btn-info btn-sm" title="Visualizar"><i class="fas fa-eye"></i></a>
                                         <a id="botao_editar_categoria" chave="<?php echo $categoria['id']; ?>" class="btn btn-success btn-sm" title="Editar"><i class="fas fa-edit"></i></a>

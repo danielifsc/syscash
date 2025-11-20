@@ -8,6 +8,10 @@ function validaDadosCategoria($registro)
        $erros["descricao_categoria"] =  "Descrição: Campo vazio e ou informação inválida!";
    }
 
+    if (!filter_var($registro->tipo_categoria, FILTER_SANITIZE_STRING)) {
+       $erros["tipo_categoria"] =  "tipo categoria: Campo vazio e ou informação inválida!";
+   }
+
     if (count($erros) > 0) {
         $_SESSION["erros"] = $erros;
         throw new Exception("Erro nas informações!");

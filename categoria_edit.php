@@ -85,11 +85,11 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
                                 <input type="text" class="form-control" id="descricao_categoria" name="descricao_categoria" maxlength="50" value="<?php echo isset($resultado['descricao']) ? $resultado['descricao'] : ''; ?>" autofocus>
                             </div>
                             <div class="col-md-6">
-                                <input class="form-check-input" type="radio" name="tipo_categoria" id="tipo_categoria" value="1" <?php echo (isset($resultado['tipo']) && $resultado['tipo'] == 1) ? 'checked' : ''; ?> disabled>
+                                <input class="form-check-input" type="radio" name="tipo_categoria" id="tipo_categoria" value="1" <?php echo (isset($resultado['tipo']) && $resultado['tipo'] == 1) ? 'checked' : ''; ?> >
                                 <label class="form-check-label" for="tipo_categoria">
                                     Entrada
                                 </label>
-                                <input class="form-check-input" type="radio" name="tipo_categoria" id="tipo_categoria" value="2" <?php echo (isset($resultado['tipo']) && $resultado['tipo'] == 2) ? 'checked' : ''; ?> disabled>
+                                <input class="form-check-input" type="radio" name="tipo_categoria" id="tipo_categoria" value="2" <?php echo (isset($resultado['tipo']) && $resultado['tipo'] == 2) ? 'checked' : ''; ?> >
                                 <label class="form-check-label" for="tipo_categoria">
                                     Saída
                                 </label>
