@@ -1,10 +1,11 @@
+
 //para funcionar navegação via ajax os ids devem ser únicos em cada tela
 $(document).ready(function () {
     //clicar no botão da div de erros e escondendo as mensagens de erros 
     $("#div_mensagem_botao_menu").click(function () {
         $("#div_mensagem_menu").hide();
     });
-    /*
+
     $('#botao_pesquisar_grafico').click(function (e) {
         var ano = $("#ano").val();
         var id_usuario = $("#usuario_id_menu").val();
@@ -16,7 +17,8 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             cache: false,
-            url: "conta_receber_crud.php",
+            url: "conta_receber_crud.php", //"conta_pagar_crud.php"
+
             data: {
                 acao: "grafico",
                 ano: ano,
@@ -27,12 +29,18 @@ $(document).ready(function () {
                 var receber = [];
                 var receber_meses = [];
                 var receber_valores = [];
-                var receber_meses = [];
-                var receber_valores = [];
+                // var receber_meses = [];
+                var pagar = [];
+                var pagar_meses = [];
+                var pagar_valores = [];
+
+
 
                 $.each(data, function (i, item) {
                     if (i == 0) {
                         receber = item;
+                    } else {
+                        pagar = item;
                     }
                 });
 
@@ -41,62 +49,98 @@ $(document).ready(function () {
                     receber_valores.push(item);
                 });
 
-                var dados = {
+
+                $.each(pagar, function (i, item) {
+                    pagar_meses.push(i);
+                    pagar_valores.push(item);
+                });
+
+                /*  var dados = {
+                      labels: receber_meses,
+                      datasets: [{
+                          label: "Contas a Receber",
+                          backgroundColor: "#4080bf",
+                          borderColor: "#3973ac",
+                          hoverBackgroundColor: "#ccccff",
+                          hoverBorderColor: "#b3b3ff",
+                          borderWidth: 1,
+                          data: receber_valores
+                      }]
+                  };*/
+
+             /*   var dados2 = {
                     labels: receber_meses,
                     datasets: [{
-                        label: "Contas a Receber",
-                        backgroundColor: "#4080bf",
-                        borderColor: "#3973ac",
-                        hoverBackgroundColor: "#ccccff",
-                        hoverBorderColor: "#b3b3ff",
+                        label: 'Saída',
+                        backgroundColor: '#ff3300',
+                        borderColor: '#e62e00',
+                        hoverBackgroundColor: '#ffe6e6',
+                        hoverBorderColor: '#ffcccc',
+                        borderWidth: 1,
+                        data: pagar_valores
+                    }]
+
+                }
+*/
+
+                var dados1 = {
+                    labels: receber_meses,
+                    datasets: [{
+                        label: 'Entrada',
+                        backgroundColor: '#4080bf',
+                        borderColor: '#3973ac',
+                        hoverBackgroundColor: '#ccccff',
+                        hoverBorderColor: '#b3b3ff',
                         borderWidth: 1,
                         data: receber_valores
-                    }]
-                };
+                    }],
+
+                }
+
                 var grafico_canva = $("#grafico");
 
                 var graficoBarra = new Chart(
                     grafico_canva, {
-                        type: "bar",
-                        data: dados,
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: {
-                                    position: "top",
-                                },
+                    type: "bar",
+                    data: dados1, //dados1,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: "top",
+                            },
+                            title: {
+                                display: true,
+                                text: "Contas a Pagar e a Receber - " + ano
+                            }
+                        },
+                        scales: {
+                            y: {
+                                display: true,
                                 title: {
                                     display: true,
-                                    text: "Contas a Receber - " + ano
+                                    text: "Valores R$",
+                                    color: "#000000",
+                                    font: {
+                                        weight: "bold",
+                                    }
                                 }
                             },
-                            scales: {
-                                y: {
+                            x: {
+                                display: true,
+                                title: {
                                     display: true,
-                                    title: {
-                                        display: true,
-                                        text: "Valores R$",
-                                        color: "#000000",
-                                        font: {
-                                            weight: "bold",
-                                        }
-                                    }
-                                },
-                                x: {
-                                    display: true,
-                                    title: {
-                                        display: true,
-                                        text: "Meses do ano",
-                                        color: "#000000",
-                                        font: {
-                                            weight: "bold",
-                                        }
+                                    text: "Meses do ano",
+                                    color: "#000000",
+                                    font: {
+                                        weight: "bold",
                                     }
                                 }
                             }
                         }
                     }
+                }
                 );
             },
             error: function (e) {
@@ -111,7 +155,7 @@ $(document).ready(function () {
             }
         });
     });
-    */
+
     $("#home_link").click(function () {
         $(location).prop("href", "menu.php");
     });
@@ -172,7 +216,7 @@ $(document).ready(function () {
 
     showNavbar('header-toggle', 'nav-bar', 'body', 'header');
 
-    /*===== LINK ACTIVE =====*/ 
+    /*===== LINK ACTIVE =====*/
     const linkColor = document.querySelectorAll('.nav_link');
 
     function colorLink() {
